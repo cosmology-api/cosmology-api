@@ -186,7 +186,7 @@ class FriedmannLemaitreRobertsonWalker(CosmologyAPI[ArrayT], Protocol):
         ...
 
     # ----------------------------------------------
-    # Angular diameter distance
+    # Angular
 
     def angular_diameter_distance(self, z: ArrayT | float, /) -> ArrayT:
         """Angular diameter distance :math:`d_A(z)` in Mpc.
@@ -213,7 +213,7 @@ class FriedmannLemaitreRobertsonWalker(CosmologyAPI[ArrayT], Protocol):
         ...
 
     # ----------------------------------------------
-    # Luminosity distance
+    # Luminoisty
 
     def luminosity_distance(self, z: ArrayT | float, /) -> ArrayT:
         """Redshift-dependent luminosity distance in Mpc.
