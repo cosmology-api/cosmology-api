@@ -6,7 +6,6 @@ from dataclasses import field, make_dataclass
 
 from cosmology.api import StandardCosmologyAPI
 from cosmology.api._array_api import Array
-from cosmology.api._background import FriedmannLemaitreRobertsonWalker
 from cosmology.api._components import (
     HasBaryonComponent,
     HasDarkEnergyComponent,
@@ -17,6 +16,7 @@ from cosmology.api._components import (
     HasPhotonComponent,
 )
 from cosmology.api._core import CosmologyAPI
+from cosmology.api._distances import HasDistanceMeasures
 from cosmology.api._extras import HasHubbleParameter, HasTcmb
 
 from .conftest import _default_one, _return_1arg, _return_one
@@ -63,7 +63,7 @@ def test_compliant_standard(cosmology_cls, standard_attrs, standard_meths):
 
     # Check Base and Background
     assert isinstance(cosmo, CosmologyAPI)
-    assert isinstance(cosmo, FriedmannLemaitreRobertsonWalker)
+    assert isinstance(cosmo, HasDistanceMeasures)
 
     # Check Components
     assert isinstance(cosmo, HasBaryonComponent)

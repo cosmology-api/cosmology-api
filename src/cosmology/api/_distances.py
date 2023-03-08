@@ -11,7 +11,7 @@ __all__: list[str] = []
 
 
 @runtime_checkable
-class FriedmannLemaitreRobertsonWalker(CosmologyAPI[ArrayT], Protocol):
+class HasDistanceMeasures(CosmologyAPI[ArrayT], Protocol):
     """Cosmology API protocol for isotropic cosmologies.
 
     This is a protocol class that defines the standard API for isotropic
