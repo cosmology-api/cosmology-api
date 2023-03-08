@@ -5,7 +5,6 @@ list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 
-
 import pathlib
 import sys
 from importlib import import_module
@@ -58,12 +57,23 @@ highlight_language = "python3"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    # Sphinx's own extensions
+    "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.doctest",
-    "sphinx_automodapi.automodapi",
-    "matplotlib.sphinxext.plot_directive",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+    # External stuff
     "numpydoc",
     "pytest_doctestplus.sphinx.doctestplus",
+    "sphinx_automodapi.automodapi",
+    "myst_parser",
+    "sphinx_copybutton",
+    "sphinx_design",
+    "sphinx_inline_tabs",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -76,36 +86,24 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 autosummary_generate = True
 
-automodapi_toctreedirnm = "api"
-
 # Class documentation should contain *both* the class docstring and
 # the __init__ docstring
 autoclass_content = "both"
 
+# -- Options for extlinks ----------------------------------------------------
+#
 
-# This is added to the end of RST files - a good place to put substitutions to
-# be used globally.
-rst_epilog = """
-.. |author| replace:: {author}
+extlinks = {
+    "pypi": ("https://pypi.org/project/%s/", "%s"),
+}
 
-.. _Python: http://www.python.org
-"""
+# -- Options for intersphinx -------------------------------------------------
+#
 
 intersphinx_mapping = {
     "python": (
         "https://docs.python.org/3/",
         (None, "http://data.astropy.org/intersphinx/python3.inv"),
-    ),
-    "pythonloc": (
-        "http://docs.python.org/",
-        (
-            None,
-            (
-                pathlib.Path(__file__).parent.parent
-                / "local"
-                / "python3_local_links.inv"
-            ).resolve(),
-        ),
     ),
     "numpy": (
         "https://numpy.org/doc/stable/",
@@ -117,6 +115,19 @@ intersphinx_mapping = {
     ),
 }
 
+# -- Options for TODOs -------------------------------------------------------
+#
+
+todo_include_todos = True
+
+# -- Options for Markdown files ----------------------------------------------
+#
+
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+]
+myst_heading_anchors = 3
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -129,6 +140,23 @@ html_theme = "furo"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# -- Furo (theme) customization ----------------------------------------------
+
+html_theme_options = {
+    "navigation_with_keys": True,
+}
+
+# -- automodapi extension ----------------------------------------------------
+
+automodapi_toctreedirnm = "api"
+
+
+# -- matplotlib extension ----------------------------------------------------
+
+plot_include_source = True
+plot_html_show_source_link = False
+plot_html_show_formats = False
 
 
 # -- numpydoc extension -----------------------------------------------------
@@ -154,10 +182,3 @@ numpydoc_xref_ignore = {
     "positional-only",
     "keyword-only",
 }
-
-
-# -- matplotlib extension ----------------------------------------------------
-
-plot_include_source = True
-plot_html_show_source_link = False
-plot_html_show_formats = False

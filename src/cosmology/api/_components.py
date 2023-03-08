@@ -11,7 +11,7 @@ __all__: list[str] = []
 
 
 class GlobalCurvatureComponent(CosmologyAPI[ArrayT], Protocol):
-    r"""The cosmology contains global curvature, described by :math:`Omega_K`."""
+    r"""The cosmology contains global curvature, described by :math:`\Omega_K`."""
 
     @property
     def Ok0(self) -> ArrayT:
@@ -34,7 +34,7 @@ class GlobalCurvatureComponent(CosmologyAPI[ArrayT], Protocol):
 
 
 class MatterComponent(CosmologyAPI[ArrayT], Protocol):
-    r"""The cosmology contains matter, described by :math:`Omega_m`."""
+    r"""The cosmology contains matter, described by :math:`\Omega_m`."""
 
     @property
     def Om0(self) -> ArrayT:
@@ -62,7 +62,7 @@ class MatterComponent(CosmologyAPI[ArrayT], Protocol):
 
 
 class BaryonComponent(MatterComponent[ArrayT], Protocol):
-    r"""The cosmology contains baryons, described by :math:`Omega_b`."""
+    r"""The cosmology contains baryons, described by :math:`\Omega_b`."""
 
     @property
     def Ob0(self) -> ArrayT:
@@ -85,7 +85,7 @@ class BaryonComponent(MatterComponent[ArrayT], Protocol):
 
 
 class NeutrinoComponent(CosmologyAPI[ArrayT], Protocol):
-    r"""The cosmology contains neutrinos, described by :math:`Omega_\nu`."""
+    r"""The cosmology contains neutrinos, described by :math:`\Omega_\nu`."""
 
     @property
     def Onu0(self) -> ArrayT:
@@ -118,7 +118,7 @@ class NeutrinoComponent(CosmologyAPI[ArrayT], Protocol):
 
 
 class DarkEnergyComponent(CosmologyAPI[ArrayT], Protocol):
-    r"""The cosmology contains photons, described by :math:`Omega_{\rm de}`."""
+    r"""The cosmology contains photons, described by :math:`\Omega_{\rm de}`."""
 
     @property
     def Ode0(self) -> ArrayT:
@@ -141,7 +141,7 @@ class DarkEnergyComponent(CosmologyAPI[ArrayT], Protocol):
 
 
 class DarkMatterComponent(MatterComponent[ArrayT], Protocol):
-    r"""The cosmology contains cold dark matter, described by :math:`Omega_dm`."""
+    r"""The cosmology contains cold dark matter, described by :math:`\Omega_dm`."""
 
     @property
     def Odm0(self) -> ArrayT:
@@ -169,7 +169,7 @@ class DarkMatterComponent(MatterComponent[ArrayT], Protocol):
 
 
 class PhotonComponent(CosmologyAPI[ArrayT], Protocol):
-    r"""The cosmology contains photons, described by :math:`Omega_\gamma`."""
+    r"""The cosmology contains photons, described by :math:`\Omega_\gamma`."""
 
     @property
     def Ogamma0(self) -> ArrayT:
